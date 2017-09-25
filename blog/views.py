@@ -74,7 +74,7 @@ def about(request):
     '''
     aboutme=AboutMe.objects.all()[0]
     aboutme.increase_views()
-    aboutmecontent=markdown.markdown(aboutme.content,
+    aboutme.content=markdown.markdown(aboutme.content,
                                 extensions=[
                                     'markdown.extensions.extra',
                                     'markdown.extensions.codehilite',
@@ -83,5 +83,5 @@ def about(request):
 
 
     return render(request,'blog/about.html',context={
-        'aboutmecontent':aboutmecontent,
+        'aboutme':aboutme,
     })
