@@ -1,6 +1,6 @@
 from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse
-from .models import Post,Category,Tag
+from .models import Post,Category,Tag,AboutMe
 from comments.forms import CommentForm
 import markdown
 
@@ -67,4 +67,21 @@ def category(request,pk):
 
 
 def about(request):
-    return render(request,'blog/about.html')
+    '''
+    关于我
+    :param request:
+    :return:
+    '''
+    aboutme=AboutMe.objects.all()[0]
+    aboutme.increase_views()
+    aboutmecontent=markdown.markdown(aboutme.content,
+                                extensions=[
+                                    'markdown.extensions.extra',
+                                    'markdown.extensions.codehilite',
+                                    'markdown.extensions.toc',
+                                ])
+
+
+    return render(request,'blog/about.html',context={
+        'aboutmecontent':aboutmecontent,
+    })

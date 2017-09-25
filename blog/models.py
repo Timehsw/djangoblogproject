@@ -65,3 +65,24 @@ class Post(models.Model):
         文章内部类,指定文章的排序方式
         '''
         ordering=['-created_time','title']
+
+class AboutMe(models.Model):
+    '''
+    关于我的介绍部分
+    '''
+    content=models.TextField()
+    views=models.PositiveIntegerField(default=0)
+    created_time=models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return "aboutme"
+
+    def increase_views(self):
+        self.views+=1
+        self.save(update_fields=['views'])
+
+    class Meta:
+        '''
+        文章内部类,指定文章的排序方式
+        '''
+        ordering=['-created_time']
