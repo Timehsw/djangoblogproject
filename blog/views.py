@@ -1,6 +1,6 @@
 from django.shortcuts import render,get_object_or_404
 from django.views.generic import ListView,DetailView
-from .models import Post,Category,Tag,AboutMe
+from .models import Post,Category,Tag,Note,AboutMe
 from comments.forms import CommentForm
 from django.db.models import Q
 import markdown
@@ -283,7 +283,7 @@ def about(request):
     :param request:
     :return:
     '''
-    aboutme=AboutMe.objects.all()[0]
+    aboutme=Note.objects.get(name='aboutme')
     aboutme.increase_views()
     aboutme.content=markdown.markdown(aboutme.content,
                                 extensions=[
@@ -295,4 +295,25 @@ def about(request):
 
     return render(request,'blog/about.html',context={
         'aboutme':aboutme,
+    })
+
+def books(request):
+    '''
+    阅读
+    :param request:
+    :return:
+    '''
+    book=Note.objects.get(name='books')
+    book.increase_views()
+    md = markdown.Markdown(extensions=[
+        'markdown.extensions.extra',
+        'markdown.extensions.codehilite',
+        'markdown.extensions.toc',
+    ])
+    book.content = md.convert(book.content)
+    # python动态语言特性,给Post类加一个toc属性
+    book.toc = md.toc
+
+    return render(request, 'blog/book.html', context={
+        'book':book,
     })

@@ -50,6 +50,13 @@ python manage.py createsuperuser
 python manage.py shell
 ```
 
+## 增加数据
+```
+c = Category(name='category test')
+c.save()
+t = Tag(name='tag test')
+t.save()
+```
 ## 存取数据
 
 objects 是我们的模型管理器
@@ -58,7 +65,9 @@ objects 是我们的模型管理器
 from blog.models import *
 
 Category.objects.get(name='hadoop')
+Category.objects.filter(name='hadoop')
 Category.objects.all()
+
 ```
 
 ## 修改数据

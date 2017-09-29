@@ -69,6 +69,7 @@ class Post(models.Model):
 class AboutMe(models.Model):
     '''
     关于我的介绍部分
+    (已废弃,改用Note)
     '''
     content=models.TextField()
     views=models.PositiveIntegerField(default=0)
@@ -86,3 +87,24 @@ class AboutMe(models.Model):
         文章内部类,指定文章的排序方式
         '''
         ordering=['-created_time']
+
+class Note(models.Model):
+    '''
+    博客的公共存储部分:
+    存放readme部分的内容
+    存放书籍内容
+
+    根据name取出相应的内容content
+    ....
+    '''
+    name=models.CharField(max_length=70)
+    content=models.TextField()
+    views=models.PositiveIntegerField(default=0)
+    created_time=models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+
+    def increase_views(self):
+        self.views+=1
+        self.save(update_fields=['views'])

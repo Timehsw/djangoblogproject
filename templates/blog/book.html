@@ -1,0 +1,25 @@
+{% extends 'basic.html' %}
+
+{% block main %}
+    <article >
+        <header class="entry-header">
+            <h1 class="entry-title">{{ book.name }}</h1>
+            <div class="entry-meta">
+                <span class="post-date"><a href="#"><time class="entry-date"
+                                                          datetime="{{ book.created_time }}">{{ book.created_time }}</time></a></span>
+                <span class="views-count"><a href="#">{{ book.views }} 阅读</a></span>
+            </div>
+        </header>
+        <div class="entry-content clearfix">
+            {{ book.content|safe }}
+        </div>
+    </article>
+{% endblock main %}
+
+{% block toc %}
+    <div class="widget widget-content">
+        <h3 class="widget-title">文章目录</h3>
+        {{ book.toc|safe }}
+    </div>
+{% endblock toc %}
+
