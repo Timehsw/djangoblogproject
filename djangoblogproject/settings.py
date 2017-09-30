@@ -26,7 +26,7 @@ SECRET_KEY = 'jhhp9g08x3fr8f$c_j3qx@qkf7z6d(9yuotem96ub%&-26svq8'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['127.0.0.1','localhost','.importthis.top']
+ALLOWED_HOSTS = ['0.0.0.0','127.0.0.1','localhost','.importthis.top']
 
 
 # Application definition
