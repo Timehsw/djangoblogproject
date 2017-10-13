@@ -6,6 +6,7 @@
 # 环境部署
 ```
 python manage.py runserver 0.0.0.0:8000
+gunicorn --bind unix:/tmp/importthis.top.socket djangoblogproject.wsgi:application
 ```
 ## 虚拟环境
 
