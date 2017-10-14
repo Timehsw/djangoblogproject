@@ -41,7 +41,7 @@ def local_update():
 def remote_update():
     source_folder='/root/sites/importthis.top/djangoblogproject'
 
-    with cd('cd %s' % source_folder):
+    with cd(source_folder):
         run("git checkout master")
         run("git pull origin master")
         run("""
