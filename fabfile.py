@@ -55,6 +55,6 @@ def remote_update():
 
 @task
 def deploy():
-    local_update()
+    # local_update()
     remote_update()
 
