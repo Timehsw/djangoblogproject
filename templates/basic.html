@@ -3,10 +3,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>竹杖芒鞋轻胜马</title>
+    <title>Time渐行渐远</title>
 
     <!-- blog photo -->
-    <link rel="shortcut icon" href="{% static 'blog/images/wei.png' %}" >
+    <link rel="shortcut icon" href="{% static 'blog/images/wei.png' %}">
     <!-- meta -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,7 +31,7 @@
         <div class="row">
             <div class="col-md-4 col-sm-5 col-xs-8">
                 <div class="logo">
-                    <h1><a href="{% url 'blog:index' %}"><b>竹杖芒鞋轻胜马</b></a></h1>
+                    <h1><a href="{% url 'blog:index' %}"><b>Time渐行渐远</b></a></h1>
                 </div>
             </div><!-- col-md-4 -->
             <div class="col-md-8 col-sm-7 col-xs-4">
@@ -46,6 +46,7 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li class="cl-effect-11"><a href="{% url 'blog:index' %}" data-hover="首页">首页</a></li>
                             <li class="cl-effect-11"><a href="{% url 'blog:book' %}" data-hover="阅读">阅读</a></li>
+                            <li class="cl-effect-11"><a href="{% url 'blog:bookmark' %}" data-hover="书签">书签</a></li>
                             <li class="cl-effect-11"><a href="{% url 'blog:about' %}" data-hover="关于">关于</a></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
@@ -68,8 +69,8 @@
     <div class="container">
         <div class="row">
             <main class="col-md-9">
-              {% block main %}
-              {% endblock main %}
+                {% block main %}
+                {% endblock main %}
             </main>
             <aside class="col-md-2">
                 {% block toc %}
@@ -94,7 +95,7 @@
         <div class="row">
             <div class="col-md-12">
                 <p class="copyright">&copy 2017 - Prowed By <a href="https://www.djangoproject.com/"
-                                                        target="_blank" title="Django">Django</a>
+                                                               target="_blank" title="Django">Django</a>
                     - 由<a href="http://www.dmlcoding.com/" title="网页模板" target="_blank">Hushiwei</a>修改
                 </p>
             </div>
@@ -108,7 +109,7 @@
     <nav>
         <ul>
             <li><a href="{% url 'blog:index' %}">首页</a></li>
-            <li><a href="{% url 'blog:book' %}">阅读</a></li>
+            <li><a href="{% url 'blog:bookmark' %}">书签</a></li>
             <li><a href="{% url 'blog:about' %}">关于</a></li>
         </ul>
     </nav>

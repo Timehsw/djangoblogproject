@@ -60,7 +60,7 @@
         <ul>
             {% for tag in tag_list %}
                 <li>
-                <a href="{% url 'blog:tag' tag.pk %}">{{ tag.name }} <span
+                    <a href="{% url 'blog:tag' tag.pk %}">{{ tag.name }} <span
                             class="post-count">[ {{ tag.num_posts }} ]</span></a>
                 </li>
             {% empty %}

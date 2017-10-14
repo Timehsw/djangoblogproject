@@ -15,6 +15,7 @@ urlpatterns=[
     url(r'^category/(?P<pk>[0-9]+)/$',views.CategoryView.as_view(),name='category'),
     url(r'^tag/(?P<pk>[0-9]+)/$',views.TagView.as_view(),name='tag'),
     url(r'^search/$',views.search,name='search'),
-    url(r'^book/$',views.books,name='book'),
+    url(r'^book/$',views.book,name='book'),
+    url(r'^bookmark/$',views.bookmark,name='bookmark'),
     url(r'^about/$',views.about,name='about')
 ]

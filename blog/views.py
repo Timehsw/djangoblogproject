@@ -297,23 +297,38 @@ def about(request):
         'aboutme':aboutme,
     })
 
-def books(request):
+def bookmark(request):
     '''
-    阅读
+    书签
     :param request:
     :return:
     '''
-    book=Note.objects.get(name='books')
+    bookmark=Note.objects.get(name='bookmark')
+    bookmark.increase_views()
+    md = markdown.Markdown(extensions=[
+        'markdown.extensions.extra',
+        'markdown.extensions.codehilite',
+        'markdown.extensions.toc',
+    ])
+    bookmark.content = md.convert(bookmark.content)
+    # python动态语言特性,给Post类加一个toc属性
+    bookmark.toc = md.toc
+
+    return render(request, 'blog/article.html', context={
+        'content':bookmark,
+    })
+
+def book(request):
+    book=Note.objects.get(name='book')
     book.increase_views()
     md = markdown.Markdown(extensions=[
         'markdown.extensions.extra',
         'markdown.extensions.codehilite',
         'markdown.extensions.toc',
     ])
-    book.content = md.convert(book.content)
-    # python动态语言特性,给Post类加一个toc属性
-    book.toc = md.toc
+    book.content=md.convert(book.content)
+    book.toc=md.toc
 
-    return render(request, 'blog/book.html', context={
-        'book':book,
+    return render(request,'blog/article.html',context={
+        'content':book,
     })
